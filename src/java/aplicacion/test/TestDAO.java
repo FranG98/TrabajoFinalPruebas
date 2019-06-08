@@ -7,10 +7,13 @@ package aplicacion.test;
 
 import aplicacion.hibernate.dao.IVentaDAO;
 import aplicacion.hibernate.dao.imp.VentaDAOImp;
-import aplicacion.modelo.constantes.EstadoVenta;
 import aplicacion.modelo.dominio.Rol;
 import aplicacion.modelo.dominio.Usuario;
 import aplicacion.modelo.dominio.Venta;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 
 /**
  *
@@ -18,12 +21,14 @@ import aplicacion.modelo.dominio.Venta;
  */
 public class TestDAO {
     public static void main(String[] args) {
-        Venta nuevaVenta = new Venta();
-        nuevaVenta.setCodigoVenta(1);
-        nuevaVenta.setEstadoVenta(EstadoVenta.REALIZADA);
-        nuevaVenta.setFechaHoraVenta(nuevaVenta.getFechaHoraVenta());
-        nuevaVenta.setGanancia(500);
-        nuevaVenta.setUsuarioComprador(new Usuario("Fran", "God", (byte)23, 41301352, "xd.com", "chucha", "Habilitada", new Rol()));
+         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+    System.out.println("Hora actual: " + dateFormat.format(date));
+        Rol rol = new Rol();
+        Usuario usuario=new Usuario("test", "aptest", Byte.valueOf("20"), 39200693, "test@test", "test123", "ok", rol);
+        Venta nuevaVenta = new Venta("ok",date, 500, 2, usuario );
+        
+//        nuevaVenta.setUsuarioComprador(new Usuario("Fran", "God", Byte.parseByte("23"), 41301352, "xd.com", "chucha", "Habilitada", new Rol()));
         IVentaDAO ventaDAO = new VentaDAOImp();
         ventaDAO.crear(nuevaVenta);
     }

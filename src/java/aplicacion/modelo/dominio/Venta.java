@@ -37,6 +37,14 @@ public class Venta {
     public Venta() {
     }
 
+    public Venta(String estadoVenta, Date fechaHoraVenta, Integer ganancia, Integer codigoVenta, Usuario usuarioComprador) {
+        this.estadoVenta = estadoVenta;
+        this.fechaHoraVenta = fechaHoraVenta;
+        this.ganancia = ganancia;
+        this.codigoVenta = codigoVenta;
+        this.usuarioComprador = usuarioComprador;
+    }
+
     
     /**
      * Constructor parametrizado de la clase Venta
